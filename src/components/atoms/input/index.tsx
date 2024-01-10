@@ -11,7 +11,20 @@ interface InputProps {
 
 function Input({ onInputChange, value, onKeyDown }: InputProps) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onInputChange(e.target.value);
+    if (value.length <= 60) {
+      onInputChange(e.target.value);
+    }
+  };
+
+  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    const pastedText = e.clipboardData.getData("text");
+
+    if (pastedText.length + value.length <= 60) {
+      onInputChange(value + pastedText);
+    } else {
+      onInputChange(value + pastedText.slice(0, 60 - value.length));
+    }
+    e.preventDefault();
   };
 
   return (
@@ -22,6 +35,7 @@ function Input({ onInputChange, value, onKeyDown }: InputProps) {
       value={value}
       onChange={handleChange}
       onKeyDown={onKeyDown}
+      onPaste={handlePaste}
     />
   );
 }

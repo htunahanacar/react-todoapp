@@ -23,6 +23,7 @@
 .deleteTodo {
   background-color: transparent;
   border: none;
+  opacity: 50%;
 }
 
 .deleteTodo :hover {
@@ -32,6 +33,14 @@
 .selected {
   color: grey;
   text-decoration: line-through;
+}
+
+li {
+  width: 250px;
+  height: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  overflow-wrap: break-word;
 }
 
 .hidden {

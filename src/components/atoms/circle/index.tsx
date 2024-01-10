@@ -1,10 +1,11 @@
 // 1.1.1 Circle
+import "./style.css";
 import { FaRegCircle } from "react-icons/fa6";
 
 function Circle() {
   return (
     <>
-      <i aria-hidden="true">
+      <i className="circle" aria-hidden="true">
         <FaRegCircle />
       </i>
     </>

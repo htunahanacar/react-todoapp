@@ -12,6 +12,7 @@
 .add-todo-btn {
   background-color: transparent;
   border: none;
+  opacity: 50%;
 }
 
 .add-todo-btn :hover {
