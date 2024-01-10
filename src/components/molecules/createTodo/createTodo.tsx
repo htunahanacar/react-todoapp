@@ -25,7 +25,6 @@ function CreateTodo() {
       };
       setTodos([...todos, newTodo]);
       setTodoText("");
-      console.log(todos);
     }
   };
 
