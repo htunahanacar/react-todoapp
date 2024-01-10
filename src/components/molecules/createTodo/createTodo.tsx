@@ -14,15 +14,19 @@ function CreateTodo() {
   };
 
   const handleAddTodo = () => {
-    const newTodo = {
-      id: todos.length, // Yeni todo için bir id atayın (örnekte sıralı)
-      text: todoText,
-      checked: false,
-      visibility: true,
-    };
-    setTodos([...todos, newTodo]); // todos array'ine yeni todo ekleyin
-    setTodoText("");
-    console.log(todos);
+    if (todoText.length == 0) {
+      alert("Please enter a todo");
+    } else {
+      const newTodo = {
+        id: todos.length,
+        text: todoText,
+        checked: false,
+        visibility: true,
+      };
+      setTodos([...todos, newTodo]);
+      setTodoText("");
+      console.log(todos);
+    }
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
