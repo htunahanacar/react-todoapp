@@ -1,21 +1,25 @@
 // 1.2. ToDoList
 
+import { useInputContext } from "../../../context/InputContext";
 import AllBtns from "../../molecules/allBtns";
 import ToDoListItem from "../../molecules/toDoListItem";
 import "./style.css";
 
-interface ToDoListProps {
-  todos: string[]; // ToDoList bileşenine todos prop'u eklendi
-}
+function ToDoList() {
+  const { todos } = useInputContext();
 
-function ToDoList({ todos }: ToDoListProps) {
   return (
     <>
       <div className="todolist-container">
         <div id="todos">
           {todos.length > 0 ? (
-            todos.map((todo, index) => (
-              <ToDoListItem key={index} index={index} todo={todo} />
+            todos.map((todo) => (
+              <ToDoListItem
+                key={todo.id}
+                id={todo.id}
+                todo={todo.text}
+                checked={todo.checked}
+              />
             ))
           ) : (
             <div className="no-item-placeholder">

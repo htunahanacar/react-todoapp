@@ -7,45 +7,36 @@ import { LiaTimesSolid } from "react-icons/lia";
 import "./style.css";
 import Button from "../../atoms/button";
 import { useInputContext } from "../../../context/InputContext";
-import { useState } from "react";
 
 interface ToDoListItemProps {
   todo: string;
-  index: number;
+  id: number;
+  checked: boolean;
 }
 
-function ToDoListItem({ todo, index }: ToDoListItemProps) {
+function ToDoListItem({ todo, id, checked }: ToDoListItemProps) {
   const { todos, setTodos } = useInputContext();
-  const [selected, setSelected] = useState("");
-  const [isFirstClick, setIsFirstClick] = useState(true);
-  const [displayIcon, setDisplayIcon] = useState(["", "hidden"]);
 
   const handleDeleteClick = () => {
-    const updatedTodos = [...todos];
-    updatedTodos.splice(index, 1);
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };
 
   const handleCheckClick = () => {
-    if (isFirstClick) {
-      setSelected(" selected");
-      setDisplayIcon(["hidden", ""]);
-    } else {
-      setSelected("");
-      setDisplayIcon(["", "hidden"]);
-    }
-    setIsFirstClick(!isFirstClick);
+    const updatedTodos = [...todos];
+    updatedTodos[id - 1].checked = !updatedTodos[id - 1].checked;
+    setTodos(updatedTodos);
   };
 
   return (
     <>
-      <div className={"todo" + selected}>
+      <div className={"todo" + (checked ? " selected" : "")}>
         <div className="checkBtnAndLi" onClick={handleCheckClick}>
           <Button className="checkTodo" aria-hidden="true">
-            <FaRegCircle className={displayIcon[0]} />
-            <PiConfettiFill className={displayIcon[1]} />
+            <FaRegCircle className={checked ? " hidden" : ""} />
+            <PiConfettiFill className={checked ? "" : " hidden"} />
           </Button>
-          <li className={selected}>{todo}</li>
+          <li className={checked ? " selected" : ""}>{todo}</li>
         </div>
         <Button
           className="deleteTodo"

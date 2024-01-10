@@ -14,8 +14,14 @@ function CreateTodo() {
   };
 
   const handleAddTodo = () => {
-    setTodos([...todos, todoText]); // todos array'ine yeni todo ekleyin
+    const newTodo = {
+      id: todos.length + 1, // Yeni todo için bir id atayın (örnekte sıralı)
+      text: todoText,
+      checked: false,
+    };
+    setTodos([...todos, newTodo]); // todos array'ine yeni todo ekleyin
     setTodoText("");
+    console.log(todos);
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
