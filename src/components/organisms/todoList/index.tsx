@@ -17,8 +17,9 @@ function ToDoList() {
               <ToDoListItem
                 key={todo.id}
                 id={todo.id}
-                todo={todo.text}
+                text={todo.text}
                 checked={todo.checked}
+                visibility={todo.visibility}
               />
             ))
           ) : (

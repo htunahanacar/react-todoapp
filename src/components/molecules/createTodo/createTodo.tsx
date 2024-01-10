@@ -15,9 +15,10 @@ function CreateTodo() {
 
   const handleAddTodo = () => {
     const newTodo = {
-      id: todos.length + 1, // Yeni todo için bir id atayın (örnekte sıralı)
+      id: todos.length, // Yeni todo için bir id atayın (örnekte sıralı)
       text: todoText,
       checked: false,
+      visibility: true,
     };
     setTodos([...todos, newTodo]); // todos array'ine yeni todo ekleyin
     setTodoText("");

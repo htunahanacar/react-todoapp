@@ -8,16 +8,23 @@ function FilterBtns() {
   const { todos, setTodos } = useInputContext();
 
   function handleAllBtnClick() {
-    alert("Will be updated");
+    const updatedTodos = todos.map((todo) => ({ ...todo, visibility: true }));
+    setTodos(updatedTodos);
   }
 
   function handleActiveBtnClick() {
-    const updatedTodos = todos.filter((todo) => todo.checked === false);
+    const updatedTodos = todos.map((todo) => ({
+      ...todo,
+      visibility: !todo.checked,
+    }));
     setTodos(updatedTodos);
   }
 
   function handleCompletedBtnClick() {
-    const updatedTodos = todos.filter((todo) => todo.checked === true);
+    const updatedTodos = todos.map((todo) => ({
+      ...todo,
+      visibility: todo.checked,
+    }));
     setTodos(updatedTodos);
   }
 

@@ -6,15 +6,9 @@ import { PiConfettiFill } from "react-icons/pi";
 import { LiaTimesSolid } from "react-icons/lia";
 import "./style.css";
 import Button from "../../atoms/button";
-import { useInputContext } from "../../../context/InputContext";
+import { TodosProps, useInputContext } from "../../../context/InputContext";
 
-interface ToDoListItemProps {
-  todo: string;
-  id: number;
-  checked: boolean;
-}
-
-function ToDoListItem({ todo, id, checked }: ToDoListItemProps) {
+function ToDoListItem({ text, id, checked, visibility }: TodosProps) {
   const { todos, setTodos } = useInputContext();
 
   const handleDeleteClick = () => {
@@ -23,20 +17,26 @@ function ToDoListItem({ todo, id, checked }: ToDoListItemProps) {
   };
 
   const handleCheckClick = () => {
-    const updatedTodos = [...todos];
-    updatedTodos[id - 1].checked = !updatedTodos[id - 1].checked;
-    setTodos(updatedTodos);
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, checked: !todo.checked } : todo
+      )
+    );
   };
 
   return (
     <>
-      <div className={"todo" + (checked ? " selected" : "")}>
+      <div
+        className={
+          "todo" + (checked ? " selected" : "") + (visibility ? "" : " hidden")
+        }
+      >
         <div className="checkBtnAndLi" onClick={handleCheckClick}>
           <Button className="checkTodo" aria-hidden="true">
             <FaRegCircle className={checked ? " hidden" : ""} />
             <PiConfettiFill className={checked ? "" : " hidden"} />
           </Button>
-          <li className={checked ? " selected" : ""}>{todo}</li>
+          <li className={checked ? " selected" : ""}>{text}</li>
         </div>
         <Button
           className="deleteTodo"
