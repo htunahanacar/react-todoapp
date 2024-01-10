@@ -1,0 +1,19 @@
+.create-todo-container {
+  display: flex;
+  margin-bottom: 30px;
+  background-color: var(--container-bg);
+  align-items: center;
+  height: 50px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 10px;
+}
+
+.add-todo-btn {
+  background-color: transparent;
+  border: none;
+}
+
+.add-todo-btn :hover {
+  color: green;
+}

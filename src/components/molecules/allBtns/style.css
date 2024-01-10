@@ -1,0 +1,35 @@
+.all-buttons {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.137);
+  margin-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#count-todos {
+  flex: 3;
+  color: var(--btn-color);
+  font-size: 0.75rem;
+}
+
+#clear-btn:hover,
+#complete-btn:hover {
+  color: white;
+}
+
+#clear-btn,
+#complete-btn {
+  background-color: transparent;
+  border: none;
+  color: var(--btn-color);
+  font-size: 0.75rem;
+  width: 50px;
+  height: 100%;
+}

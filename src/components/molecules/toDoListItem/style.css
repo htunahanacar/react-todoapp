@@ -1,0 +1,39 @@
+.todo {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.137);
+}
+
+.checkBtnAndLi {
+  display: flex;
+  flex: 2;
+  height: 100%;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.checkTodo,
+.deleteTodo {
+  background-color: transparent;
+  border: none;
+}
+
+.deleteTodo :hover {
+  color: red;
+}
+
+.selected {
+  color: grey;
+  text-decoration: line-through;
+}
+
+.hidden {
+  display: none;
+}
