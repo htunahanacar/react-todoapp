@@ -24,7 +24,7 @@ body {
   display: flex;
   justify-content: center;
   height: 100vh;
-  background: url(public/bg-desktop-dark.jpg) no-repeat top center;
+  background: url(./assets/bg-desktop-dark.jpg) no-repeat top center;
   background-color: var(--body-bg);
 }
 
