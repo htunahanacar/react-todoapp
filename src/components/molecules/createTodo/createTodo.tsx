@@ -1,6 +1,6 @@
 // 1.1. CreateTodo
 import Circle from "../../atoms/Circle";
-import Input from "../../atoms/input";
+import Input from "../../atoms/Input";
 import { useInputContext } from "../../../context/InputContext";
 import Button from "../../atoms/Button";
 import { LiaPlusSolid } from "react-icons/lia";

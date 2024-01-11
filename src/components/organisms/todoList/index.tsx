@@ -1,8 +1,8 @@
 // 1.2. ToDoList
 
 import { useInputContext } from "../../../context/InputContext";
-import AllBtns from "../../molecules/allBtns";
-import ToDoListItem from "../../molecules/toDoListItem";
+import AllBtns from "../../molecules/AllBtns";
+import ToDoListItem from "../../molecules/ToDoListItem";
 import styles from "./style.module.css";
 
 function ToDoList() {
