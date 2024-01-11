@@ -1,10 +1,10 @@
 // 1.1. CreateTodo
-import Circle from "../../atoms/circle";
+import Circle from "../../atoms/Circle";
 import Input from "../../atoms/input";
 import { useInputContext } from "../../../context/InputContext";
-import Button from "../../atoms/button";
+import Button from "../../atoms/Button";
 import { LiaPlusSolid } from "react-icons/lia";
-import "./style.css";
+import styles from "./style.module.css";
 
 function CreateTodo() {
   const { todoText, setTodoText, todos, setTodos } = useInputContext();
@@ -36,7 +36,7 @@ function CreateTodo() {
 
   return (
     <>
-      <div className="create-todo-container">
+      <div className={styles.createTodoContainer}>
         <Circle />
         <Input
           onInputChange={handleInputChange}
@@ -44,8 +44,7 @@ function CreateTodo() {
           onKeyDown={handleKeyPress}
         />
         <Button
-          id="add-todo-btn"
-          className="add-todo-btn"
+          className={styles.addTodoButton}
           aria-hidden="true"
           onClick={handleAddTodo}
         >

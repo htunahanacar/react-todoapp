@@ -1,3 +1,5 @@
+import styles from "./style.module.css";
+
 interface AllBtnProps {
   id?: string;
   className?: string;
@@ -8,7 +10,11 @@ interface AllBtnProps {
 function Button({ id, className, children, onClick }: AllBtnProps) {
   return (
     <>
-      <button id={id} className={className} onClick={onClick}>
+      <button
+        id={id}
+        className={styles.button + " " + className}
+        onClick={onClick}
+      >
         {children}
       </button>
     </>

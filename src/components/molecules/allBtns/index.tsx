@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { TodosProps, useInputContext } from "../../../context/InputContext";
-import Button from "../../atoms/button";
-import "./style.css";
+import Button from "../../atoms/Button";
+import styles from "./style.module.css";
 
 interface AllBtnProps {
   countTodo: number;
@@ -31,12 +31,12 @@ function AllBtns({ countTodo }: AllBtnProps) {
 
   return (
     <>
-      <div className="all-buttons">
-        <p id="count-todos">{countTodo} items left</p>
-        <Button id="clear-btn" onClick={handleDeleteAllClick}>
+      <div className={styles.allButtons}>
+        <p className={styles.countTodos}>{countTodo} items left</p>
+        <Button className={styles.allButton} onClick={handleDeleteAllClick}>
           Clear
         </Button>
-        <Button id="complete-btn" onClick={handleCheckAllClick}>
+        <Button className={styles.allButton} onClick={handleCheckAllClick}>
           Done
         </Button>
       </div>

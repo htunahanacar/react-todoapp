@@ -1,18 +1,13 @@
-import ToDoApp from "./components/templates";
-import Footer from "./components/molecules/footer";
-import Header from "./components/molecules/header";
+import ToDoApp from "./components/templates/ToDoApp";
+
 import { InputProvider } from "./context/InputContext";
 
 function App() {
   return (
     <>
-      <div className="container">
-        <Header />
-        <InputProvider>
-          <ToDoApp />
-        </InputProvider>
-        <Footer />
-      </div>
+      <InputProvider>
+        <ToDoApp />
+      </InputProvider>
     </>
   );
 }

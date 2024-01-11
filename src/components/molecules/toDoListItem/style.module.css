@@ -10,7 +10,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.137);
 }
 
-.checkBtnAndLi {
+.checkButtonAndLi {
   display: flex;
   flex: 2;
   height: 100%;
@@ -21,8 +21,6 @@
 
 .checkTodo,
 .deleteTodo {
-  background-color: transparent;
-  border: none;
   opacity: 50%;
 }
 

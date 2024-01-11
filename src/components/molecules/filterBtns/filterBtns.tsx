@@ -2,17 +2,22 @@
 
 import { useState } from "react";
 import { useInputContext } from "../../../context/InputContext";
-import Button from "../../atoms/button";
-import "./style.css";
+import Button from "../../atoms/Button";
+import styles from "./style.module.css";
+enum FocusType {
+  ALL = "all",
+  ACTIVE = "active",
+  DONE = "done",
+}
 
 function FilterBtns() {
   const { todos, setTodos } = useInputContext();
-  const [focus, setFocus] = useState(["focused", "unfocused", "unfocused"]);
+  const [focus, setFocus] = useState<FocusType>(FocusType.ALL);
 
   function handleAllBtnClick() {
     const updatedTodos = todos.map((todo) => ({ ...todo, visibility: true }));
     setTodos(updatedTodos);
-    setFocus(["focused", "unfocused", "unfocused"]);
+    setFocus(FocusType.ALL);
   }
 
   function handleActiveBtnClick() {
@@ -21,7 +26,7 @@ function FilterBtns() {
       visibility: !todo.checked,
     }));
     setTodos(updatedTodos);
-    setFocus(["unfocused", "focused", "unfocused"]);
+    setFocus(FocusType.ACTIVE);
   }
 
   function handleCompletedBtnClick() {
@@ -30,25 +35,38 @@ function FilterBtns() {
       visibility: todo.checked,
     }));
     setTodos(updatedTodos);
-    setFocus(["unfocused", "unfocused", "focused"]);
+    setFocus(FocusType.DONE);
   }
 
   return (
     <>
-      <div className="filter-btns">
-        <Button id="all-btn" className={focus[0]} onClick={handleAllBtnClick}>
+      <div className={styles.filterBtnsContainer}>
+        <Button
+          className={
+            styles.filterButton +
+            " " +
+            (FocusType.ALL === focus ? styles.focused : "")
+          }
+          onClick={handleAllBtnClick}
+        >
           All
         </Button>
         <Button
-          id="active-btn"
-          className={focus[1]}
+          className={
+            styles.filterButton +
+            " " +
+            (FocusType.ACTIVE === focus ? styles.focused : "")
+          }
           onClick={handleActiveBtnClick}
         >
           Active
         </Button>
         <Button
-          id="completed-btn"
-          className={focus[2]}
+          className={
+            styles.filterButton +
+            " " +
+            (FocusType.DONE === focus ? styles.focused : "")
+          }
           onClick={handleCompletedBtnClick}
         >
           Done

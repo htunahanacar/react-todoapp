@@ -1,16 +1,14 @@
-.todolist-container {
+.ToDoListContainer {
   border-radius: 10px;
   background-color: var(--container-bg);
 }
 
-.no-item-placeholder {
+.noItemPlaceHolder {
   list-style: none;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   height: 50px;
   padding-left: 15px;
-  padding-right: 15px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.137);
 }

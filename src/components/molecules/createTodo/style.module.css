@@ -1,4 +1,4 @@
-.create-todo-container {
+.createTodoContainer {
   display: flex;
   margin-bottom: 30px;
   background-color: var(--container-bg);
@@ -9,12 +9,10 @@
   border-radius: 10px;
 }
 
-.add-todo-btn {
-  background-color: transparent;
-  border: none;
+.addTodoButton {
   opacity: 50%;
 }
 
-.add-todo-btn :hover {
+.addTodoButton :hover {
   color: green;
 }

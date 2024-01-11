@@ -3,14 +3,14 @@
 import { useInputContext } from "../../../context/InputContext";
 import AllBtns from "../../molecules/allBtns";
 import ToDoListItem from "../../molecules/toDoListItem";
-import "./style.css";
+import styles from "./style.module.css";
 
 function ToDoList() {
   const { todos } = useInputContext();
 
   return (
     <>
-      <div className="todolist-container">
+      <div className={styles.ToDoListContainer}>
         <div id="todos">
           {todos.length > 0 ? (
             todos.map((todo) => (
@@ -23,7 +23,7 @@ function ToDoList() {
               />
             ))
           ) : (
-            <div className="no-item-placeholder">
+            <div className={styles.noItemPlaceHolder}>
               <li>You have no todos yet. Add one!</li>
             </div>
           )}

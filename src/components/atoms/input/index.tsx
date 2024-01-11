@@ -1,7 +1,7 @@
 // 1.1.2. Input
 
 import { ChangeEvent } from "react";
-import "./style.css";
+import styles from "./style.module.css";
 
 interface InputProps {
   onInputChange: (value: string) => void;
@@ -31,7 +31,7 @@ function Input({ onInputChange, value, onKeyDown }: InputProps) {
     <input
       type="text"
       placeholder="Create a new todo..."
-      id="add-todo"
+      className={styles.addTodo}
       value={value}
       onChange={handleChange}
       onKeyDown={onKeyDown}

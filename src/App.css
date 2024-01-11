@@ -15,42 +15,10 @@
   color: white;
 }
 
-.fa {
-  color: var(--btn-color);
-  -webkit-text-stroke: 0.5px var(--container-bg);
-}
-
 body {
   display: flex;
   justify-content: center;
   height: 100vh;
   background: url(./assets/bg-desktop-dark.jpg) no-repeat top center;
   background-color: var(--body-bg);
-}
-
-.container {
-  margin: 50px 0px;
-  width: 350px;
-  height: 100vh;
-}
-
-li {
-  width: 250px;
-  height: auto;
-  margin-left: 10px;
-  margin-right: 10px;
-  overflow-wrap: break-word;
-}
-
-.hideElement {
-  display: none;
-}
-
-@media screen and (min-width: 1024px) {
-  .container {
-    width: 600px;
-  }
-  li {
-    width: 500px;
-  }
 }

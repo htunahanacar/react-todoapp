@@ -4,16 +4,15 @@ import { FaRegCircle } from "react-icons/fa6";
 import { PiConfettiFill } from "react-icons/pi";
 
 import { LiaTimesSolid } from "react-icons/lia";
-import "./style.css";
-import Button from "../../atoms/button";
+import styles from "./style.module.css";
+import Button from "../../atoms/Button";
 import { TodosProps, useInputContext } from "../../../context/InputContext";
 
 function ToDoListItem({ text, id, checked, visibility }: TodosProps) {
-  const { todos, setTodos } = useInputContext();
+  const { setTodos } = useInputContext();
 
   const handleDeleteClick = () => {
-    const updatedTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(updatedTodos);
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
   const handleCheckClick = () => {
@@ -28,18 +27,20 @@ function ToDoListItem({ text, id, checked, visibility }: TodosProps) {
     <>
       <div
         className={
-          "todo" + (checked ? " selected" : "") + (visibility ? "" : " hidden")
+          styles.todo +
+          (checked ? " " + styles.selected : "") +
+          (visibility ? "" : " " + styles.hidden)
         }
       >
-        <div className="checkBtnAndLi" onClick={handleCheckClick}>
-          <Button className="checkTodo" aria-hidden="true">
-            <FaRegCircle className={checked ? " hidden" : ""} />
-            <PiConfettiFill className={checked ? "" : " hidden"} />
+        <div className={styles.checkButtonAndLi} onClick={handleCheckClick}>
+          <Button className={styles.checkTodo} aria-hidden="true">
+            <FaRegCircle className={checked ? " " + styles.hidden : ""} />
+            <PiConfettiFill className={checked ? "" : " " + styles.hidden} />
           </Button>
-          <li className={checked ? " selected" : ""}>{text}</li>
+          <li className={checked ? " " + styles.selected : ""}>{text}</li>
         </div>
         <Button
-          className="deleteTodo"
+          className={styles.deleteTodo}
           aria-hidden="true"
           onClick={handleDeleteClick}
         >
