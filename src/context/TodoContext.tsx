@@ -1,4 +1,4 @@
-// InputContext
+// TodoContext
 
 import React, { createContext, useContext, ReactNode } from "react";
 
@@ -9,16 +9,16 @@ export interface TodosProps {
   visibility: boolean;
 }
 
-interface InputContextProps {
+interface TodoContextProps {
   todoText: string;
   setTodoText: React.Dispatch<React.SetStateAction<string>>;
   todos: TodosProps[];
   setTodos: React.Dispatch<React.SetStateAction<TodosProps[]>>;
 }
 
-const InputContext = createContext<InputContextProps | undefined>(undefined);
+const TodoContext = createContext<TodoContextProps | undefined>(undefined);
 
-export const InputProvider: React.FC<{ children: ReactNode }> = ({
+export const TodoProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [todoText, setTodoText] = React.useState<string>("");
@@ -34,17 +34,17 @@ export const InputProvider: React.FC<{ children: ReactNode }> = ({
   });
 
   return (
-    <InputContext.Provider value={{ todoText, setTodoText, todos, setTodos }}>
+    <TodoContext.Provider value={{ todoText, setTodoText, todos, setTodos }}>
       {children}
-    </InputContext.Provider>
+    </TodoContext.Provider>
   );
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const useInputContext = () => {
-  const context = useContext(InputContext);
+export const useTodoContext = () => {
+  const context = useContext(TodoContext);
   if (!context) {
-    throw new Error("useInputContext must be used within an InputProvider");
+    throw new Error("useTodoContext must be used within an TodoProvider");
   }
   return context;
 };

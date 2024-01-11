@@ -1,13 +1,13 @@
 // 1.1. CreateTodo
 import Circle from "../../atoms/Circle";
 import Input from "../../atoms/Input";
-import { useInputContext } from "../../../context/InputContext";
+import { useTodoContext } from "../../../context/TodoContext";
 import Button from "../../atoms/Button";
 import { LiaPlusSolid } from "react-icons/lia";
 import styles from "./style.module.css";
 
 function CreateTodo() {
-  const { todoText, setTodoText, todos, setTodos } = useInputContext();
+  const { todoText, setTodoText, todos, setTodos } = useTodoContext();
 
   const handleInputChange = (inputValue: string) => {
     setTodoText(inputValue);

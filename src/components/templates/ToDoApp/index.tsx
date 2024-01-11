@@ -1,6 +1,6 @@
 // 1. todoapp
 import { useEffect } from "react";
-import { useInputContext } from "../../../context/InputContext";
+import { useTodoContext } from "../../../context/TodoContext";
 import CreateTodo from "../../molecules/CreateToDo/createTodo";
 import FilterBtns from "../../molecules/FilterBtns/filterBtns";
 import ToDoList from "../../organisms/ToDoList";
@@ -9,7 +9,7 @@ import Footer from "../../molecules/Footer";
 import styles from "./style.module.css";
 
 function ToDoApp() {
-  const { todos } = useInputContext();
+  const { todos } = useTodoContext();
   useEffect(() => {
     localStorage.setItem("mytodos", JSON.stringify(todos));
   }, [todos]);

@@ -1,7 +1,7 @@
 // 1.3. FilterBtns
 
 import { useState } from "react";
-import { useInputContext } from "../../../context/InputContext";
+import { useTodoContext } from "../../../context/TodoContext";
 import Button from "../../atoms/Button";
 import styles from "./style.module.css";
 enum FocusType {
@@ -11,7 +11,7 @@ enum FocusType {
 }
 
 function FilterBtns() {
-  const { todos, setTodos } = useInputContext();
+  const { todos, setTodos } = useTodoContext();
   const [focus, setFocus] = useState<FocusType>(FocusType.ALL);
 
   function handleAllBtnClick() {

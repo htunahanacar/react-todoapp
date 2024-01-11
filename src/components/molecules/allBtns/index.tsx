@@ -1,7 +1,7 @@
 // 1.2.2. AllBtns
 
 import { useState } from "react";
-import { TodosProps, useInputContext } from "../../../context/InputContext";
+import { TodosProps, useTodoContext } from "../../../context/TodoContext";
 import Button from "../../atoms/Button";
 import styles from "./style.module.css";
 
@@ -10,7 +10,7 @@ interface AllBtnProps {
 }
 
 function AllBtns({ countTodo }: AllBtnProps) {
-  const { todos, setTodos } = useInputContext();
+  const { todos, setTodos } = useTodoContext();
   const [isFirstClick, setIsFirstClick] = useState(true);
 
   const handleDeleteAllClick = () => {

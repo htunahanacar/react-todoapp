@@ -6,10 +6,10 @@ import { PiConfettiFill } from "react-icons/pi";
 import { LiaTimesSolid } from "react-icons/lia";
 import styles from "./style.module.css";
 import Button from "../../atoms/Button";
-import { TodosProps, useInputContext } from "../../../context/InputContext";
+import { TodosProps, useTodoContext } from "../../../context/TodoContext";
 
 function ToDoListItem({ text, id, checked, visibility }: TodosProps) {
-  const { setTodos } = useInputContext();
+  const { setTodos } = useTodoContext();
 
   const handleDeleteClick = () => {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));

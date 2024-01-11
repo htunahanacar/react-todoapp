@@ -1,13 +1,13 @@
 import ToDoApp from "./components/templates/ToDoApp";
 
-import { InputProvider } from "./context/InputContext";
+import { TodoProvider } from "./context/TodoContext";
 
 function App() {
   return (
     <>
-      <InputProvider>
+      <TodoProvider>
         <ToDoApp />
-      </InputProvider>
+      </TodoProvider>
     </>
   );
 }
