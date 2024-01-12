@@ -6,43 +6,43 @@ import { PiConfettiFill } from "react-icons/pi";
 import { LiaTimesSolid } from "react-icons/lia";
 import styles from "./style.module.css";
 import Button from "../../atoms/Button";
-import { TodosProps, useTodoContext } from "../../../context/TodoContext";
+import { useContext } from "react";
+import { TodoContext } from "../../../context/TodoContext";
 
-function ToDoListItem({ text, id, checked, visibility }: TodosProps) {
-  const { setTodos } = useTodoContext();
+interface ToDoListItemProps {
+  todo: object;
+}
 
-  const handleDeleteClick = () => {
-    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
-  };
-
-  const handleCheckClick = () => {
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, checked: !todo.checked } : todo
-      )
-    );
-  };
+function ToDoListItem({ todo }: ToDoListItemProps) {
+  const { dispatch } = useContext(TodoContext);
 
   return (
     <>
       <div
         className={
           styles.todo +
-          (checked ? " " + styles.selected : "") +
-          (visibility ? "" : " " + styles.hidden)
+          (todo.checked ? " " + styles.selected : "") +
+          (todo.visibility ? "" : " " + styles.hidden)
         }
       >
-        <div className={styles.checkButtonAndLi} onClick={handleCheckClick}>
+        <div
+          className={styles.checkButtonAndLi}
+          onClick={() => dispatch({ type: "CHECK_TODO", id: todo.id })}
+        >
           <Button className={styles.checkTodo} aria-hidden="true">
-            <FaRegCircle className={checked ? " " + styles.hidden : ""} />
-            <PiConfettiFill className={checked ? "" : " " + styles.hidden} />
+            <FaRegCircle className={todo.checked ? " " + styles.hidden : ""} />
+            <PiConfettiFill
+              className={todo.checked ? "" : " " + styles.hidden}
+            />
           </Button>
-          <li className={checked ? " " + styles.selected : ""}>{text}</li>
+          <li className={todo.checked ? " " + styles.selected : ""}>
+            {todo.text}
+          </li>
         </div>
         <Button
           className={styles.deleteTodo}
           aria-hidden="true"
-          onClick={handleDeleteClick}
+          onClick={() => dispatch({ type: "REMOVE_TODO", id: todo.id })}
         >
           <LiaTimesSolid />
         </Button>

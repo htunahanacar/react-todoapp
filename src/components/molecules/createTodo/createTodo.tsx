@@ -1,56 +1,50 @@
 // 1.1. CreateTodo
 import Circle from "../../atoms/Circle";
 import Input from "../../atoms/Input";
-import { useTodoContext } from "../../../context/TodoContext";
 import Button from "../../atoms/Button";
 import { LiaPlusSolid } from "react-icons/lia";
 import styles from "./style.module.css";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useContext } from "react";
+import { TodoContext } from "../../../context/TodoContext";
+
+interface FormInputs {
+  formText: string;
+}
 
 function CreateTodo() {
-  const { todoText, setTodoText, todos, setTodos } = useTodoContext();
-
-  const handleInputChange = (inputValue: string) => {
-    setTodoText(inputValue);
-  };
-
-  const handleAddTodo = () => {
-    if (todoText.length == 0) {
-      alert("Please enter a todo");
-    } else {
-      const newTodo = {
-        id: todos.length,
-        text: todoText,
-        checked: false,
-        visibility: true,
-      };
-      setTodos([...todos, newTodo]);
-      setTodoText("");
-    }
-  };
-
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      handleAddTodo();
-    }
+  const { dispatch } = useContext(TodoContext);
+  const { register, handleSubmit, reset } = useForm<FormInputs>({
+    defaultValues: {
+      formText: "",
+    },
+  });
+  const onSubmit: SubmitHandler<FormInputs> = (data: FormInputs) => {
+    dispatch({ type: "ADD_TODO", todo: { text: data.formText } });
+    reset();
   };
 
   return (
     <>
-      <div className={styles.createTodoContainer}>
+      <form
+        className={styles.createTodoContainer}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <Circle />
         <Input
-          onInputChange={handleInputChange}
-          value={todoText}
-          onKeyDown={handleKeyPress}
+          register={register}
+          label="formText"
+          required={true}
+          maxLength={60}
         />
         <Button
+          type="submit"
           className={styles.addTodoButton}
           aria-hidden="true"
-          onClick={handleAddTodo}
         >
           <LiaPlusSolid />
         </Button>
-      </div>
+      </form>
     </>
   );
 }

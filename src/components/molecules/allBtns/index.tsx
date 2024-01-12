@@ -1,7 +1,7 @@
 // 1.2.2. AllBtns
 
-import { useState } from "react";
-import { TodosProps, useTodoContext } from "../../../context/TodoContext";
+import { useContext, useState } from "react";
+import { TodoContext } from "../../../context/TodoContext";
 import Button from "../../atoms/Button";
 import styles from "./style.module.css";
 
@@ -10,23 +10,18 @@ interface AllBtnProps {
 }
 
 function AllBtns({ countTodo }: AllBtnProps) {
-  const { todos, setTodos } = useTodoContext();
+  const { dispatch } = useContext(TodoContext);
   const [isFirstClick, setIsFirstClick] = useState(true);
 
-  const handleDeleteAllClick = () => {
-    const updatedTodos: TodosProps[] = [];
-    setTodos(updatedTodos);
-  };
+  const handleDeleteAllClick = () => dispatch({ type: "REMOVE_ALL_TODO" });
 
   const handleCheckAllClick = () => {
-    let updatedTodos;
     if (isFirstClick) {
-      updatedTodos = todos.map((todo) => ({ ...todo, checked: true }));
+      dispatch({ type: "CHECK_ALL_TODO" });
     } else {
-      updatedTodos = todos.map((todo) => ({ ...todo, checked: false }));
+      dispatch({ type: "UNCHECK_ALL_TODO" });
     }
     setIsFirstClick(!isFirstClick);
-    setTodos(updatedTodos);
   };
 
   return (

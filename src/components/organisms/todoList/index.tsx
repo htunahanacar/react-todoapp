@@ -1,27 +1,19 @@
 // 1.2. ToDoList
 
-import { useTodoContext } from "../../../context/TodoContext";
-import AllBtns from "../../molecules/AllBtns";
-import ToDoListItem from "../../molecules/ToDoListItem";
+import { useContext } from "react";
 import styles from "./style.module.css";
+import { TodoContext } from "../../../context/TodoContext";
+import ToDoListItem from "../../molecules/ToDoListItem";
+import AllBtns from "../../molecules/AllBtns";
 
 function ToDoList() {
-  const { todos } = useTodoContext();
-
+  const { todos } = useContext(TodoContext);
   return (
     <>
       <div className={styles.ToDoListContainer}>
         <div id="todos">
           {todos.length > 0 ? (
-            todos.map((todo) => (
-              <ToDoListItem
-                key={todo.id}
-                id={todo.id}
-                text={todo.text}
-                checked={todo.checked}
-                visibility={todo.visibility}
-              />
-            ))
+            todos.map((todo) => <ToDoListItem todo={todo} key={todo.id} />)
           ) : (
             <div className={styles.noItemPlaceHolder}>
               <li>You have no todos yet. Add one!</li>

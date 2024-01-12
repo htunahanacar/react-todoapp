@@ -1,13 +1,12 @@
 import ToDoApp from "./components/templates/ToDoApp";
-
-import { TodoProvider } from "./context/TodoContext";
+import TodoContextProvider from "./context/TodoContext";
 
 function App() {
   return (
     <>
-      <TodoProvider>
+      <TodoContextProvider>
         <ToDoApp />
-      </TodoProvider>
+      </TodoContextProvider>
     </>
   );
 }

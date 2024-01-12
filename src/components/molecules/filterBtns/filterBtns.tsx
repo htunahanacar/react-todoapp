@@ -1,7 +1,7 @@
 // 1.3. FilterBtns
 
-import { useState } from "react";
-import { useTodoContext } from "../../../context/TodoContext";
+import { useContext, useState } from "react";
+import { TodoContext } from "../../../context/TodoContext";
 import Button from "../../atoms/Button";
 import styles from "./style.module.css";
 enum FocusType {
@@ -11,32 +11,23 @@ enum FocusType {
 }
 
 function FilterBtns() {
-  const { todos, setTodos } = useTodoContext();
-  const [focus, setFocus] = useState<FocusType>(FocusType.ALL);
+  const { dispatch } = useContext(TodoContext);
+  const [focus, setFocus] = useState<FocusType>();
 
-  function handleAllBtnClick() {
-    const updatedTodos = todos.map((todo) => ({ ...todo, visibility: true }));
-    setTodos(updatedTodos);
+  const handleAllBtnClick = () => {
+    dispatch({ type: "SEE_ALL" });
     setFocus(FocusType.ALL);
-  }
+  };
 
-  function handleActiveBtnClick() {
-    const updatedTodos = todos.map((todo) => ({
-      ...todo,
-      visibility: !todo.checked,
-    }));
-    setTodos(updatedTodos);
+  const handleActiveBtnClick = () => {
+    dispatch({ type: "SEE_ACTIVE" });
     setFocus(FocusType.ACTIVE);
-  }
+  };
 
-  function handleCompletedBtnClick() {
-    const updatedTodos = todos.map((todo) => ({
-      ...todo,
-      visibility: todo.checked,
-    }));
-    setTodos(updatedTodos);
+  const handleDoneBtnClick = () => {
+    dispatch({ type: "SEE_DONE" });
     setFocus(FocusType.DONE);
-  }
+  };
 
   return (
     <>
@@ -67,7 +58,7 @@ function FilterBtns() {
             " " +
             (FocusType.DONE === focus ? styles.focused : "")
           }
-          onClick={handleCompletedBtnClick}
+          onClick={handleDoneBtnClick}
         >
           Done
         </Button>

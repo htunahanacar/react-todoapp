@@ -1,41 +1,21 @@
 // 1.1.2. Input
 
-import { ChangeEvent } from "react";
 import styles from "./style.module.css";
 
 interface InputProps {
-  onInputChange: (value: string) => void;
-  value: string;
-  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  register: any;
+  label: string;
+  required?: boolean;
+  maxLength?: number;
 }
 
-function Input({ onInputChange, value, onKeyDown }: InputProps) {
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (value.length <= 60) {
-      onInputChange(e.target.value);
-    }
-  };
-
-  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
-    const pastedText = e.clipboardData.getData("text");
-
-    if (pastedText.length + value.length <= 60) {
-      onInputChange(value + pastedText);
-    } else {
-      onInputChange(value + pastedText.slice(0, 60 - value.length));
-    }
-    e.preventDefault();
-  };
-
+function Input({ register, label, required, maxLength }: InputProps) {
   return (
     <input
+      {...register(label, { required: required, maxLength: maxLength })}
       type="text"
       placeholder="Create a new todo..."
       className={styles.addTodo}
-      value={value}
-      onChange={handleChange}
-      onKeyDown={onKeyDown}
-      onPaste={handlePaste}
     />
   );
 }
