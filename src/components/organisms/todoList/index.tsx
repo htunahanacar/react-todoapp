@@ -3,8 +3,9 @@
 import { useContext } from "react";
 import styles from "./style.module.css";
 import { TodoContext } from "../../../context/TodoContext";
-import ToDoListItem from "../../molecules/ToDoListItem/index.tsx";
-import AllBtns from "../../molecules/AllBtns/index.tsx";
+import AllBtns from "../../molecules/allBtns";
+import ToDoListItem from "../../molecules/toDoListItem";
+
 
 function ToDoList() {
   const { todos } = useContext(TodoContext);

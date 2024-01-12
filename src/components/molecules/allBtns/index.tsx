@@ -2,8 +2,9 @@
 
 import { useContext, useState } from "react";
 import { TodoContext } from "../../../context/TodoContext";
-import Button from "../../atoms/Button/index.tsx";
+
 import styles from "./style.module.css";
+import Button from "../../atoms/Button";
 
 interface AllBtnProps {
   countTodo: number;
