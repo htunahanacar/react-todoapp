@@ -2,7 +2,7 @@
 
 import { useContext, useState } from "react";
 import { TodoContext } from "../../../context/TodoContext";
-import Button from "../../atoms/Button";
+import Button from "../../atoms/Button/index.tsx";
 import styles from "./style.module.css";
 enum FocusType {
   ALL = "all",

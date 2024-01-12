@@ -1,12 +1,12 @@
 // 1.1. CreateTodo
-import Circle from "../../atoms/Circle";
-import Input from "../../atoms/Input";
-import Button from "../../atoms/Button";
+import Circle from "../../atoms/Circle/index.tsx";
+import Input from "../../atoms/Input/index.tsx";
+import Button from "../../atoms/Button/index.tsx";
 import { LiaPlusSolid } from "react-icons/lia";
 import styles from "./style.module.css";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useContext } from "react";
-import { TodoContext } from "../../../context/TodoContext";
+import { TodoContext } from "../../../context/TodoContext.tsx";
 
 interface FormInputs {
   formText: string;

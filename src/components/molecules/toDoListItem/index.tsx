@@ -5,7 +5,7 @@ import { PiConfettiFill } from "react-icons/pi";
 
 import { LiaTimesSolid } from "react-icons/lia";
 import styles from "./style.module.css";
-import Button from "../../atoms/Button";
+import Button from "../../atoms/Button/index.tsx";
 import { useContext } from "react";
 import { TodoContext } from "../../../context/TodoContext";
 
