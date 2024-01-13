@@ -5,9 +5,10 @@ import styles from "./style.module.css";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useContext } from "react";
 import { TodoContext } from "../../../context/TodoContext.tsx";
-import Circle from "../../atoms/circle/index.tsx";
-import Input from "../../atoms/input/index.tsx";
+import Circle from "../../atoms/Circle/index.tsx";
+import Input from "../../atoms/Input/index.tsx";
 import Button from "../../atoms/Button/index.tsx";
+
 
 interface FormInputs {
   formText: string;

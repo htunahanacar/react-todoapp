@@ -1,10 +1,11 @@
 // 1. todoapp
 
-import CreateTodo from "../../molecules/createTodo";
-import FilterBtns from "../../molecules/filterBtns";
-import Footer from "../../molecules/footer";
-import Header from "../../molecules/header";
-import ToDoList from "../../organisms/todoList";
+
+import CreateTodo from "../../molecules/CreateTodo";
+import FilterBtns from "../../molecules/FilterBtns";
+import Footer from "../../molecules/Footer";
+import Header from "../../molecules/Header";
+import ToDoList from "../../organisms/ToDoList";
 import styles from "./style.module.css";
 
 function ToDoApp() {
