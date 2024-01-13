@@ -1,0 +1,11 @@
+.button {
+  background-color: transparent;
+  border: none;
+  color: var(--btn-color);
+  font-size: 0.75rem;
+  height: 100%;
+}
+
+.button:hover {
+  color: white;
+}
