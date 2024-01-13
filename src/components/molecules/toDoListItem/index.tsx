@@ -8,9 +8,10 @@ import styles from "./style.module.css";
 import { useContext } from "react";
 import { TodoContext } from "../../../context/TodoContext";
 import Button from "../../atoms/Button";
+import { TodosProps } from "../../../context/TodoContext";
 
 interface ToDoListItemProps {
-  todo: object;
+  todo: TodosProps;
 }
 
 function ToDoListItem({ todo }: ToDoListItemProps) {

@@ -12,7 +12,7 @@ enum FocusType {
 
 function FilterBtns() {
   const { dispatch } = useContext(TodoContext);
-  const [focus, setFocus] = useState<FocusType>();
+  const [focus, setFocus] = useState<FocusType>(FocusType.ALL);
 
   const handleAllBtnClick = () => {
     dispatch({ type: "SEE_ALL" });

@@ -1,17 +1,22 @@
-// toDoReducer
+// 3. toDoReducer
+import { TodosProps, ActionProps } from "../context/TodoContext";
 
-export const toDoReducer = (state, action) => {
+
+export const toDoReducer = (state: TodosProps[], action: ActionProps): TodosProps[]  => {
   switch (action.type) {
     case "ADD_TODO":
-      return [
-        ...state,
-        {
-          id: crypto.randomUUID(),
-          text: action.todo.text,
-          checked: false,
-          visibility: true,
-        },
-      ];
+      if (action.todo) {
+        return [
+          ...state,
+          {
+            id: crypto.randomUUID(),
+            text: action.todo.text,
+            checked: false,
+            visibility: true,
+          },
+        ];
+      }
+      return state;
     case "REMOVE_TODO":
       return state.filter((todo) => todo.id !== action.id);
     case "CHECK_TODO":

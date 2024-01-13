@@ -24,3 +24,7 @@ export default App;
 // 1.2.2. AllBtns
 
 // 1.3. FilterBtns
+
+// 2. TodoContext
+
+// 3. toDoReducer
