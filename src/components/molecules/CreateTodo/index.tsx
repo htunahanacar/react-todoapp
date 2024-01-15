@@ -9,7 +9,6 @@ import Circle from "../../atoms/Circle/index.tsx";
 import Input from "../../atoms/Input/index.tsx";
 import Button from "../../atoms/Button/index.tsx";
 
-
 interface FormInputs {
   formText: string;
 }
@@ -34,10 +33,9 @@ function CreateTodo() {
       >
         <Circle />
         <Input
-          register={register}
-          label="formText"
-          required={true}
-          maxLength={60}
+          type="text"
+          placeholder="Create a new todo..."
+          {...register("formText", { required: true, maxLength: 60 })}
         />
         <Button
           type="submit"

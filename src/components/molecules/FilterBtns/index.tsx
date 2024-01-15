@@ -12,7 +12,7 @@ enum FocusType {
 
 function FilterBtns() {
   const { dispatch } = useContext(TodoContext);
-  const [focus, setFocus] = useState<FocusType>(FocusType.ALL);
+  const [focus, setFocus] = useState<FocusType>(FocusType.ALL); // useReducer ile yönetebilirim bu kısmı da
 
   const handleAllBtnClick = () => {
     dispatch({ type: "SEE_ALL" });
@@ -68,3 +68,5 @@ function FilterBtns() {
 }
 
 export default FilterBtns;
+
+// classNameleri fonksiyonla yönetebiliriz.

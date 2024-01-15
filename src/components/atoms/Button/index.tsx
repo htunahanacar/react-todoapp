@@ -2,7 +2,7 @@ import styles from "./style.module.css";
 
 type ButtonType = "button" | "submit" | "reset" | undefined;
 
-interface AllBtnProps {
+interface ButtonProps {
   id?: string;
   className?: string;
   onClick?: () => void;
@@ -10,18 +10,16 @@ interface AllBtnProps {
   type?: ButtonType;
 }
 
-function Button({ id, className, children, onClick, type }: AllBtnProps) {
+function Button({ id, className, children, onClick, type }: ButtonProps) {
   return (
-    <>
-      <button
-        type={type}
-        id={id}
-        className={styles.button + " " + className}
-        onClick={onClick}
-      >
-        {children}
-      </button>
-    </>
+    <button
+      type={type}
+      id={id}
+      className={styles.button + " " + className}
+      onClick={onClick}
+    >
+      {children}
+    </button>
   );
 }
 

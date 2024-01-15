@@ -2,21 +2,22 @@
 
 import { FaRegCircle } from "react-icons/fa6";
 import { PiConfettiFill } from "react-icons/pi";
-
 import { LiaTimesSolid } from "react-icons/lia";
 import styles from "./style.module.css";
-import { useContext } from "react";
-import { TodoContext } from "../../../context/TodoContext";
 import Button from "../../atoms/Button";
 import { TodosProps } from "../../../context/TodoContext";
 
 interface ToDoListItemProps {
   todo: TodosProps;
+  handleCheckClick: () => void;
+  handleDeleteClick: () => void;
 }
 
-function ToDoListItem({ todo }: ToDoListItemProps) {
-  const { dispatch } = useContext(TodoContext);
-
+function ToDoListItem({
+  todo,
+  handleCheckClick,
+  handleDeleteClick,
+}: ToDoListItemProps) {
   return (
     <>
       <div
@@ -26,10 +27,7 @@ function ToDoListItem({ todo }: ToDoListItemProps) {
           (todo.visibility ? "" : " " + styles.hidden)
         }
       >
-        <div
-          className={styles.checkButtonAndLi}
-          onClick={() => dispatch({ type: "CHECK_TODO", id: todo.id })}
-        >
+        <div className={styles.checkButtonAndLi} onClick={handleCheckClick}>
           <Button className={styles.checkTodo} aria-hidden="true">
             <FaRegCircle className={todo.checked ? " " + styles.hidden : ""} />
             <PiConfettiFill
@@ -43,7 +41,7 @@ function ToDoListItem({ todo }: ToDoListItemProps) {
         <Button
           className={styles.deleteTodo}
           aria-hidden="true"
-          onClick={() => dispatch({ type: "REMOVE_TODO", id: todo.id })}
+          onClick={handleDeleteClick}
         >
           <LiaTimesSolid />
         </Button>

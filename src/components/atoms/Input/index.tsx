@@ -1,23 +1,23 @@
-// 1.1.2. Input
-
+import React from "react";
 import styles from "./style.module.css";
 
 interface InputProps {
-  register: any;
-  label: string;
-  required?: boolean;
-  maxLength?: number;
+  type: string;
+  placeholder: string;
 }
 
-function Input({ register, label, required, maxLength }: InputProps) {
-  return (
-    <input
-      {...register(label, { required: required, maxLength: maxLength })}
-      type="text"
-      placeholder="Create a new todo..."
-      className={styles.addTodo}
-    />
-  );
-}
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ type, placeholder, ...rest }, ref) => {
+    return (
+      <input
+        type={type}
+        placeholder={placeholder}
+        className={styles.addTodo}
+        ref={ref}
+        {...rest}
+      />
+    );
+  }
+);
 
 export default Input;
