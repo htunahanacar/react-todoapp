@@ -1,12 +1,11 @@
 .header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30px;
-  margin-right: 8px;
-  margin-left: 5px;
-  color: white;
+  margin: 50px 8px 30px 5px;
+  color: var(--primary);
 }
 
 .title {
   font-size: 1.3rem;
+  text-decoration: none;
 }

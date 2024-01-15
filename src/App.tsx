@@ -1,14 +1,22 @@
-import ToDoApp from "./components/templates/ToDoApp";
-import TodoContextProvider from "./context/TodoContext";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import Home from "./pages/Home";
+import RootLayout from "./layouts/RootLayout";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={RootLayout()}>
+      <Route index element={<Home />} />
+    </Route>
+  )
+);
 
 function App() {
-  return (
-    <>
-      <TodoContextProvider>
-        <ToDoApp />
-      </TodoContextProvider>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

@@ -10,7 +10,7 @@
 }
 
 .addTodoButton {
-  opacity: 50%;
+  opacity: var(--opacity);
 }
 
 .addTodoButton :hover {

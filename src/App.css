@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
 
 :root {
+  --primary: white;
   --body-bg: hsl(235, 21%, 11%);
   --container-bg: hsl(235, 24%, 19%);
   --btn-color: hsl(234, 11%, 52%);
+  --opacity: 50%;
 }
 * {
   margin: 0;
